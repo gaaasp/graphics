@@ -9,8 +9,8 @@ export default async function getGraphicCards() {
 				.querySelector("head > script:nth-child(38)")
 				.textContent.split("dataLayer.push(")[1]
 				.slice(0, -3)
-				.replaceAll("\n", "")
-				.replaceAll("'", '"')
+				.replace(/\\n/g, "")
+				.replace(/'/g, '"')
 		).ecommerce.impressions.map(
 			({ brand, category, id, list, name, position, price }) => ({
 				name,
@@ -44,8 +44,8 @@ export default async function getGraphicCards() {
 								.querySelector("head > script:nth-child(38)")
 								.textContent.split("dataLayer.push(")[1]
 								.slice(0, -3)
-								.replaceAll("\n", "")
-								.replaceAll("'", '"')
+								.replace(/\\n/g, "")
+								.replace(/'/g, '"')
 						).ecommerce.impressions.map(
 							({
 								brand,
