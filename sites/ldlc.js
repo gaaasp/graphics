@@ -7,7 +7,7 @@ export default async function getGraphicCards() {
 		let products = JSON.parse(
 			doc
 				.querySelector("head > script:nth-child(38)")
-				.innerText.split("dataLayer.push(")[1]
+				.textContent.split("dataLayer.push(")[1]
 				.slice(0, -3)
 				.replaceAll("\n", "")
 				.replaceAll("'", '"')
@@ -19,13 +19,13 @@ export default async function getGraphicCards() {
 			})
 		);
 		const pages = await Promise.all(
-			(document.querySelector(
+			(doc.querySelector(
 				"#listing > div.wrap-list > div.listing-product > ul.pagination"
 			)
 				? Array.from(
 						Array(
 							Array.from(
-								document.querySelector(
+								doc.querySelector(
 									"#listing > div.wrap-list > div.listing-product > ul.pagination"
 								).children
 							).length - 2
@@ -42,7 +42,7 @@ export default async function getGraphicCards() {
 						JSON.parse(
 							doc
 								.querySelector("head > script:nth-child(38)")
-								.innerText.split("dataLayer.push(")[1]
+								.textContent.split("dataLayer.push(")[1]
 								.slice(0, -3)
 								.replaceAll("\n", "")
 								.replaceAll("'", '"')

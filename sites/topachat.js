@@ -8,11 +8,11 @@ export default async function getGraphicCards() {
 			doc.querySelector("#content > section > div > section").children
 		).map((product) => ({
 			name: product.children[product.childElementCount - 1].children[1]
-				.children[0].children[0].innerText,
+				.children[0].children[0].textContent,
 			price: parseFloat(
 				product.children[
 					product.childElementCount - 1
-				].children[2].children[0].children[0].children[0].innerText
+				].children[2].children[0].children[0].children[0].textContent
 					.slice(0, -2)
 					.replace(",", ".")
 			),
@@ -43,11 +43,11 @@ export default async function getGraphicCards() {
 						).map((product) => ({
 							name: product.children[
 								product.childElementCount - 1
-							].children[1].children[0].children[0].innerText,
+							].children[1].children[0].children[0].textContent,
 							price: parseFloat(
 								product.children[
 									product.childElementCount - 1
-								].children[2].children[0].children[0].children[0].innerText
+								].children[2].children[0].children[0].children[0].textContent
 									.slice(0, -2)
 									.replace(",", ".")
 							),

@@ -3,7 +3,7 @@ module.exports = {
 	cards: [
 		{
 			name: "RTX 3070",
-			price: 750,
+			price: 1000,
 		},
 		{
 			name: "RTX 3060 Ti",

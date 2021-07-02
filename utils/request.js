@@ -1,3 +1,6 @@
+const fetch = require("undici-fetch");
+import { JSDOM } from "jsdom";
+
 export default async function request(url) {
 	return await fetch(`https://www.${url}`, {
 		headers: {
@@ -6,5 +9,5 @@ export default async function request(url) {
 		},
 	})
 		.then((res) => res.text())
-		.then((html) => new DOMParser().parseFromString(html, "text/html"));
+		.then((html) => new JSDOM(html).window.document);
 }
