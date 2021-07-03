@@ -1,4 +1,4 @@
-export { default as request, api } from "./request";
-export { default as getGraphicCards } from "./cards";
-export { default as pages } from "./pages";
-export { default as getUpdates } from "./updates";
+export { default as request, api } from "./request.js";
+export { default as getGraphicCards } from "./cards.js";
+export { default as pages } from "./pages.js";
+export { default as getUpdates } from "./updates.js";

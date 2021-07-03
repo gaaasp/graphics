@@ -1,6 +1,6 @@
 import Redis from "ioredis";
-import { cards } from "../config";
-import { getGraphicCards } from "../utils";
+import { cards } from "../config.js";
+import { getGraphicCards } from "../utils/index.js";
 
 export default async function getUpdates() {
 	const redis = new Redis(process.env.REDIS_URL);

@@ -1,6 +1,6 @@
 import { JSDOM } from "jsdom";
-import { api, pages } from "../utils";
-const FormData = require("form-data");
+import { api, pages } from "../utils/index.js";
+import FormData from "form-data";
 
 export default async function getGraphicCards() {
 	return await pages(

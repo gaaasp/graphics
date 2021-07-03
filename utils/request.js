@@ -1,5 +1,5 @@
-const fetch = require("node-fetch");
-const HttpsProxyAgent = require("https-proxy-agent");
+import fetch from "node-fetch";
+import HttpsProxyAgent from "https-proxy-agent";
 import { JSDOM } from "jsdom";
 
 export default async function request(url) {
@@ -10,9 +10,9 @@ export default async function request(url) {
 
 export async function api(url, { headers = {}, ...config } = {}) {
 	const proxies = [
-		"51.81.80.170",
-		"51.195.91.5",
-		"151.80.155.24",
+		//"51.81.80.170",
+		//"51.195.91.5",
+		//"151.80.155.24",
 		"151.80.155.220",
 		"51.79.249.253",
 		"51.79.249.252",

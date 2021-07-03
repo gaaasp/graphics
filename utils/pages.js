@@ -1,4 +1,4 @@
-import { request } from ".";
+import { request } from "./index.js";
 
 export default async function pages(
 	f,

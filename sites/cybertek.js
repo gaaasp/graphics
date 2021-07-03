@@ -1,4 +1,4 @@
-import { pages } from "../utils";
+import { pages } from "../utils/index.js";
 
 export default async function getGraphicCards() {
 	return await pages(

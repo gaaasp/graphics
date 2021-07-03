@@ -1,5 +1,5 @@
-import { sites } from "../config";
-import * as sitesApis from "../sites";
+import { sites } from "../config.js";
+import * as sitesApis from "../sites/index.js";
 
 export default async function getGraphicCards() {
 	const sitesProducts = await Promise.all(
