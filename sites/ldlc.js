@@ -15,6 +15,11 @@ export default async function getGraphicCards() {
 			({ brand, category, id, list, name, position, price }) => ({
 				name,
 				price: parseFloat(price),
+				url: `https://www.ldlc.com${
+					doc.querySelector(
+						`#pdt-${id} > div.dsp-cell-right > div.pdt-info > div.pdt-desc > h3 > a`
+					).href
+				}`,
 				site: "ldlc",
 			})
 		);
@@ -58,6 +63,11 @@ export default async function getGraphicCards() {
 							}) => ({
 								name,
 								price: parseFloat(price),
+								url: `https://www.ldlc.com${
+									doc.querySelector(
+										`#pdt-${id} > div.dsp-cell-right > div.pdt-info > div.pdt-desc > h3 > a`
+									).href
+								}`,
 								site: "ldlc",
 							})
 						)

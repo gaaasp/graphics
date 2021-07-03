@@ -16,6 +16,10 @@ export default async function getGraphicCards() {
 					.slice(0, -2)
 					.replace(",", ".")
 			),
+			url:
+				"https://www.topachat.com" +
+				product.children[product.childElementCount - 1].children[1]
+					.children[0].href,
 			site: "topachat",
 		}));
 		const pagesArray = Array.from(
@@ -51,6 +55,10 @@ export default async function getGraphicCards() {
 									.slice(0, -2)
 									.replace(",", ".")
 							),
+							url:
+								"https://www.topachat.com" +
+								product.children[product.childElementCount - 1]
+									.children[1].children[0].href,
 							site: "topachat",
 						}))
 					)
