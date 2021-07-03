@@ -28,5 +28,7 @@ export async function api(url, { headers = {}, ...config } = {}) {
 			`http://${proxies[Math.floor(Math.random() * proxies.length)]}:8080`
 		),
 		...config,
+	}).catch((err) => {
+		console.log("❌", err);
 	});
 }

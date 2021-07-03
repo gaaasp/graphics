@@ -7,7 +7,6 @@ export default async function getUpdates() {
 
 	let oldProducts = await redis.get("products");
 	oldProducts = oldProducts ? JSON.parse(oldProducts) : [];
-
 	const products = await getGraphicCards();
 
 	const removed = wanted(

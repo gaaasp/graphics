@@ -4,8 +4,13 @@ export default async function getGraphicCards() {
 	return await pages(
 		(doc) => [
 			JSON.parse(
-				doc
-					.querySelector("head > script:nth-child(38)")
+				Array.from(doc.querySelector("head").children)
+					.find((item) =>
+						item.textContent
+							.replace("\n", "")
+							.replace(/ /g, "")
+							.startsWith("dataLayer=")
+					)
 					.textContent.split("dataLayer.push(")[1]
 					.slice(0, -3)
 					.replace(/\\n/g, "")

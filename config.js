@@ -10,14 +10,14 @@ export const sites = [
 export const cards = [
 	{
 		name: "RTX 3070 Ti",
-		price: 900,
+		price: 900 + 200,
 	},
 	{
 		name: "RTX 3070",
-		price: 800,
+		price: 800 + 200,
 	},
 	{
 		name: "RTX 3060 Ti",
-		price: 700,
+		price: 700 + 200,
 	},
 ];
