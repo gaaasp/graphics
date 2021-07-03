@@ -1,24 +1,8 @@
-import { sites, cards } from "../config";
-import * as sitesApis from "../sites";
+import { cards } from "../config";
+import { getGraphicCards } from "../utils";
 
-module.exports = async (req, res) => {
-	const sitesProducts = await Promise.all(
-		sites.map(
-			async (site) =>
-				await sitesApis[
-					site
-						.split(".")
-						.map((text, i) =>
-							i === 0
-								? text
-								: text[0].toLocaleUpperCase() + text.substr(1)
-						)
-						.join("")
-				]()
-		)
-	);
-	let products = [];
-	sitesProducts.map((items) => items.map((item) => products.push(item)));
+module.exports = async (_req, res) => {
+	const products = await getGraphicCards();
 	res.json(
 		products.filter(({ name, price }) =>
 			cards.find(

@@ -1,9 +1,16 @@
 module.exports = {
-	sites: ["topachat", "ldlc", "materiel.net"], // topachat, ldlc, materiel.net, rueducommerce, cdiscount, cybertek, fnac
+	sites: [
+		"topachat",
+		"ldlc",
+		"materiel.net",
+		"cybertek",
+		"cdiscount",
+		"rueducommerce",
+	],
 	cards: [
 		{
 			name: "RTX 3070",
-			price: 800,
+			price: 850,
 		},
 		{
 			name: "RTX 3060 Ti",
