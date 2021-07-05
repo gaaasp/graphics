@@ -19,5 +19,6 @@ export default async function getGraphicCards() {
 	);
 	let products = [];
 	sitesProducts.map((items) => items.map((item) => products.push(item)));
+	products = products.filter(({ price }) => price)
 	return products;
 }
