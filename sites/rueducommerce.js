@@ -58,9 +58,9 @@ export default async function getGraphicCards() {
 			) : 1,
 		],
 		{
-			base: "rueducommerce.fr/rayon/composants-16/carte-graphique-231",
+			base: "rueducommerce.fr/rayon/composants-16/carte-graphique-231?en-stock=oui",
 			page: (i) =>
-				`rueducommerce.fr/rayon/composants-16/carte-graphique-231?page=${i}`,
+				`rueducommerce.fr/rayon/composants-16/carte-graphique-231?en-stock=oui&page=${i}`,
 		}
 	);
 }
