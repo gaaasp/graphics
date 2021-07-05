@@ -27,9 +27,9 @@ export async function api(url, { headers = {}, ...config } = {}) {
 			referer: `https://www.${url.split("/")[0]}/${config.referer || ""}`,
 			...headers,
 		},
-		agent: new HttpsProxyAgent(
+		/*agent: new HttpsProxyAgent(
 			`http://${proxies[Math.floor(Math.random() * proxies.length)]}:8080`
-		),
+		),*/
 		...config,
 	}).catch((err) => {
 		console.log("❌", err);

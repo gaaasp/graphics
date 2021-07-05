@@ -46,4 +46,4 @@ const send = async () => {
 
 send();
 
-setInterval(send, 1000 * 20);
+setInterval(send, 1000 * 60);
