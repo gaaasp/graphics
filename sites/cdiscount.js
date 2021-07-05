@@ -7,7 +7,7 @@ export default async function getGraphicCards() {
 		async (data, _i, pages) => {
 			await new Promise((r) => setTimeout(r, 500));
 			return [
-				data.products
+				data ? data.products
 					.filter(({ prx }) => prx)
 					.map(({ name, url, prx }) => ({
 						name,
@@ -20,7 +20,7 @@ export default async function getGraphicCards() {
 						),
 						url,
 						site: "cdiscount",
-					})),
+					})) : [],
 				pages,
 			];
 		},
@@ -54,15 +54,19 @@ export default async function getGraphicCards() {
 					headers: {
 						"x-requested-with": "XMLHttpRequest",
 					},
-				}).then((res) => res.json());
+				})
+					.then((res) => res.json())
+					.catch((err) => {
+						console.log("❌", err);
+					});
 			},
 			first: (data) =>
-				parseFloat(
+				data ? parseFloat(
 					new JSDOM(
 						`<html><body>${data.pagination}</body></html>`
 					).window.document.querySelector("#PaginationForm_TotalPage")
 						.value
-				),
+				) : 1,
 		}
 	);
 }

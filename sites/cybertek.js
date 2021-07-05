@@ -3,7 +3,7 @@ import { pages } from "../utils/index.js";
 export default async function getGraphicCards() {
 	return await pages(
 		(doc) => [
-			Array.from(
+			doc ? Array.from(
 				doc.querySelector(
 					"#content_product > div > div.categorie-r.categorie-block-r > div.categorie-filtre.lst_grid"
 				).children
@@ -22,8 +22,8 @@ export default async function getGraphicCards() {
 				),
 				url: product.children[0].href,
 				site: "cybertek",
-			})),
-			Math.ceil(
+			})) : [],
+			doc ? Math.ceil(
 				parseFloat(
 					doc
 						.querySelector(
@@ -36,7 +36,7 @@ export default async function getGraphicCards() {
 							"#content_product > div > div.categorie-r.categorie-block-r > div.categorie-filtre.lst_grid"
 						).children
 					).length
-			),
+			) : 1,
 		],
 		{
 			base: "cybertek.fr/carte-graphique-6.aspx",

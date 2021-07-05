@@ -4,7 +4,7 @@ import FormData from "form-data";
 export default async function getGraphicCards() {
 	return await pages(
 		async (doc, _i, prices) => [
-			Array.from(
+			doc ? Array.from(
 				doc.querySelector(
 					"#tpl__products-list > div:nth-child(5) > div > div.col-12.col-lg-8.col-xl-9 > div.js-is-loading.active > ul"
 				).children
@@ -17,8 +17,8 @@ export default async function getGraphicCards() {
 					2
 				)}.html`,
 				site: "materiel.net",
-			})),
-			Math.ceil(
+			})) : [] ,
+			doc ? Math.ceil(
 				parseFloat(
 					doc
 						.querySelector(
@@ -35,7 +35,7 @@ export default async function getGraphicCards() {
 							.textContent.split(" sur")[0]
 							.split("- ")[1]
 					)
-			),
+			) : 1,
 			prices,
 		],
 		{

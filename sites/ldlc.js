@@ -3,7 +3,7 @@ import { pages } from "../utils/index.js";
 export default async function getGraphicCards() {
 	return await pages(
 		(doc) => [
-			JSON.parse(
+			doc ? JSON.parse(
 				Array.from(doc.querySelector("head").children)
 					.find((item) =>
 						item.textContent
@@ -24,8 +24,8 @@ export default async function getGraphicCards() {
 					).href
 				}`,
 				site: "ldlc",
-			})),
-			doc.querySelector(
+			})): [],
+			doc?.querySelector(
 				"#listing > div.wrap-list > div.listing-product > ul.pagination"
 			)
 				? Array.from(
@@ -33,7 +33,7 @@ export default async function getGraphicCards() {
 							"#listing > div.wrap-list > div.listing-product > ul.pagination"
 						).children
 				  ).length - 1
-				: 1 && 1,
+				: 1,
 		],
 		{
 			base: "ldlc.com/informatique/pieces-informatique/carte-graphique-interne/c4684/+fdi-1.html",

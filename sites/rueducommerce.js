@@ -3,7 +3,7 @@ import { pages } from "../utils/index.js";
 export default async function getGraphicCards() {
 	return await pages(
 		(document) => [
-			Array.from(document.querySelector("#listing-infinite").children)
+			document ? Array.from(document.querySelector("#listing-infinite").children)
 				.filter(
 					(product) =>
 						product.nodeName === "ARTICLE" &&
@@ -43,8 +43,8 @@ export default async function getGraphicCards() {
 						)[0].children[0].href
 					}`,
 					site: "rueducommerce",
-				})),
-			Math.ceil(
+				})) : [],
+			document ? Math.ceil(
 				parseFloat(
 					document.querySelector(
 						"#product__listing-list-footer > div > p > i.to"
@@ -55,7 +55,7 @@ export default async function getGraphicCards() {
 							"#product__listing-list-footer > div > p > i.from"
 						).textContent
 					)
-			),
+			) : 1,
 		],
 		{
 			base: "rueducommerce.fr/rayon/composants-16/carte-graphique-231",
