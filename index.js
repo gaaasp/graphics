@@ -11,37 +11,41 @@ const bot = new Telegraf(process.env.TELEGRAM_TOKEN, { polling: true });
 let chats = await redis.get("chats");
 chats = chats ? JSON.parse(chats) : [];
 
+let products = await redis.get("products");
+products = products ? JSON.parse(products) : [];
+
 bot.onText(/\/start/, (ctx) => {
-	bot.sendMessage(ctx.chat.id, "🥳 Joined with success");
-	chats = [...chats.filter((chat) => chat !== ctx.chat.id), ctx.chat.id];
-	redis.set("chats", JSON.stringify(chats));
+  bot.sendMessage(ctx.chat.id, "🥳 Joined with success");
+  chats = [...chats.filter((chat) => chat !== ctx.chat.id), ctx.chat.id];
+  redis.set("chats", JSON.stringify(chats));
 });
 
 console.log("🚀 Starting...", JSON.stringify(chats));
 
 const send = async () => {
-	const { added, removed } = await getUpdates();
-	const messages = [
-		...added.map(
-			({ name, price, url }) =>
-				`✅ ${price?.toLocaleString("fr-FR", {
-					style: "currency",
-					currency: "EUR",
-				})} - ${name}
+  const { added, removed, newProducts } = await getUpdates(products);
+  products = newProducts;
+  const messages = [
+    ...added.map(
+      ({ name, price, url }) =>
+        `✅ ${price?.toLocaleString("fr-FR", {
+          style: "currency",
+          currency: "EUR",
+        })} - ${name}
 🔗 ${url}`
-		),
-		...removed.map(
-			({ name, price }) =>
-				`❌ ${price?.toLocaleString("fr-FR", {
-					style: "currency",
-					currency: "EUR",
-				})} - ${name}`
-		),
-	];
-	console.log(new Date().toISOString(), messages);
-	chats.map((chat) =>
-		messages.map((message) => bot.sendMessage(chat, message))
-	);
+    ),
+    ...removed.map(
+      ({ name, price }) =>
+        `❌ ${price?.toLocaleString("fr-FR", {
+          style: "currency",
+          currency: "EUR",
+        })} - ${name}`
+    ),
+  ];
+  console.log(new Date().toISOString(), messages);
+  chats.map((chat) =>
+    messages.map((message) => bot.sendMessage(chat, message))
+  );
 };
 
 send();
