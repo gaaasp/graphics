@@ -19,6 +19,11 @@ bot.onText(/\/start/, (ctx) => {
   chats = [...chats.filter((chat) => chat !== ctx.chat.id), ctx.chat.id];
   redis.set("chats", JSON.stringify(chats));
 });
+bot.onText(/\/end/, (ctx) => {
+  bot.sendMessage(ctx.chat.id, "😢 Goodbye");
+  chats = chats.filter((chat) => chat !== ctx.chat.id);
+  redis.set("chats", JSON.stringify(chats));
+});
 
 console.log("🚀 Starting...", JSON.stringify(chats));
 

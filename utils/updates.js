@@ -5,7 +5,6 @@ import { getGraphicCards } from "../utils/index.js";
 export default async function getUpdates(oldProducts) {
   const redis = new Redis(process.env.REDIS_URL);
 
-  oldProducts = oldProducts ? JSON.parse(oldProducts) : [];
   const products = await getGraphicCards();
 
   const removed = wanted(
