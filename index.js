@@ -38,7 +38,7 @@ const send = async () => {
 				})} - ${name}`
 		),
 	];
-	console.log(messages);
+	console.log(new Date().toISOString(), messages);
 	chats.map((chat) =>
 		messages.map((message) => bot.sendMessage(chat, message))
 	);
