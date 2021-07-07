@@ -59,11 +59,11 @@ export default async function getGraphicCards() {
           });
       },
       first: (data) =>
-        data
+        data?.pagination
           ? parseFloat(
               new JSDOM(
                 `<html><body>${data.pagination}</body></html>`
-              ).window.document.querySelector("#PaginationForm_TotalPage").value
+              ).window.document.querySelector("#PaginationForm_TotalPage")?.value || 1
             )
           : 1,
     }
